@@ -2,20 +2,14 @@ const expres = require('express')
 const User = require('../models/User')
 const Post = require('../models/Post')
 const router = expres.Router()
+const { registerValidation, loginValidation } = require('./../validations/authValidations')
 
 
-const Joi = require('@hapi/joi')
 
 router.post('/register', async(req, res) => {
 
-    // Validation before registeration
-    const schema = Joi.object().keys({
-        email: Joi.string().trim().email().required(),
-        password: Joi.string().trim().min(5).max(10).required(),
-        name: Joi.string().trim().min(5).max(10).required(),
-    })
-    const { error } = schema.validate(req.body);
 
+    const { error } = registerValidation(req.body)
     if (error)
         return res.status(400).send(error)
 
