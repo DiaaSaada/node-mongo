@@ -1,3 +1,4 @@
+//const dotenv = require('dotenv')
 const expres = require('express')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
@@ -6,7 +7,9 @@ const Post = require('./Post')
 const PostController = require('./controllers/posts')
 const app = expres()
 const router = expres.Router()
-mongoose.connect('mongodb+srv://diaa:lWKNSBiLhRkCa8KQ@cluster0.cqyqa.mongodb.net/cluster0?retryWrites=true&w=majority', {
+
+const dotenv = require('dotenv').config().parsed
+mongoose.connect(dotenv.DB_CONNECT, {
     useNewUrlParser: true
 }, (r) => {
     console.log('Connected')
