@@ -1,5 +1,5 @@
 const expres = require('express')
-const Post = require('./../Post')
+const Post = require('../models/Post')
 const router = expres.Router()
 
 /**
