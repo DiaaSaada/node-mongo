@@ -2,6 +2,9 @@ const expres = require('express')
 const Post = require('./../Post')
 const router = expres.Router()
 
+/**
+ * CRUD for posts
+ */
 
 router.get('/', async(req, res) => {
 
