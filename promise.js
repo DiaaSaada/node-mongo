@@ -48,9 +48,22 @@ const fetchAuthorCountry = (author) => {
 }
 
 
-console.log('promise unclean way')
-    // un clean way
-const res = fetchArticle()
-    .then(article => fetchAuthor(article))
-    .then(author => fetchAuthorCountry(author))
-    .then(authorCountry => console.log(authorCountry));
+//console.log('promise unclean way')
+// un clean way
+// const res = fetchArticle()
+//     .then(article => fetchAuthor(article))
+//     .then(author => fetchAuthorCountry(author))
+//     .then(authorCountry => console.log(authorCountry));
+
+
+console.log('promise CLEAN way')
+
+async function fetchData() {
+    const article = await fetchArticle();
+    const author = await fetchAuthorCountry(article)
+    const authorCountry = await fetchAuthorCountry(author)
+    console.log(authorCountry);
+    console.log("fetchData finished")
+}
+
+fetchData()
